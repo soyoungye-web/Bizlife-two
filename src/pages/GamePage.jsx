@@ -59,9 +59,6 @@ export default function GamePage() {
   };
 
   const handleNextDay = () => {
-    setGameState((prev) => ({
-      day: prev.day + 1,
-      cash: prev.cash + 1000
     }));
   };
 
