@@ -8,11 +8,6 @@ const INDUSTRY_LABELS = {
   service: '连锁服务',
   software: '互联网软件'
 };
-const INDUSTRY_INCOME = {
-  retail: 2000,
-  service: 3000,
-  software: 5000
-};
 
 const loadGameState = () => {
   try {
@@ -64,11 +59,6 @@ export default function GamePage() {
   };
 
   const handleNextDay = () => {
-    if (!company) return;
-    const dailyIncome = INDUSTRY_INCOME[company.industry] ?? 0;
-    setGameState((prev) => ({
-      day: prev.day + 1,
-      cash: prev.cash + dailyIncome
     }));
   };
 
@@ -145,8 +135,6 @@ export default function GamePage() {
             <div className="stat-value">{INDUSTRY_LABELS[company.industry] ?? company.industry}</div>
             <div className="stat-label">创建于</div>
             <div className="stat-value">Day {company.createdDay}</div>
-            <div className="stat-label">每日收入</div>
-            <div className="stat-value">¥ {INDUSTRY_INCOME[company.industry] ?? 0}</div>
           </div>
           <button className="primary-button" onClick={handleNextDay}>
             进入下一天
