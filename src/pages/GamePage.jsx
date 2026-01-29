@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'bizlife_game_state';
 const COMPANY_KEY = 'bizlife_company';
-const DEFAULT_STATE = { day: 1, cash: 500000 };
+
 const INDUSTRY_LABELS = {
   retail: '连锁零售',
   service: '连锁服务',
   software: '互联网软件'
 };
-
 const loadGameState = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULT_STATE;
     const parsed = JSON.parse(raw);
-    if (typeof parsed?.day !== 'number' || typeof parsed?.cash !== 'number') {
+
       return DEFAULT_STATE;
     }
     return parsed;
@@ -58,8 +57,7 @@ export default function GamePage() {
     setCompany(newCompany);
   };
 
-  const handleNextDay = () => {
-    }));
+
   };
 
   return (
@@ -127,6 +125,7 @@ export default function GamePage() {
               <div className="stat-label">Cash</div>
               <div className="stat-value">{gameState.cash}</div>
             </div>
+
           </div>
           <div className="stat-card">
             <div className="stat-label">企业名称</div>
@@ -135,6 +134,7 @@ export default function GamePage() {
             <div className="stat-value">{INDUSTRY_LABELS[company.industry] ?? company.industry}</div>
             <div className="stat-label">创建于</div>
             <div className="stat-value">Day {company.createdDay}</div>
+
           </div>
           <button className="primary-button" onClick={handleNextDay}>
             进入下一天
