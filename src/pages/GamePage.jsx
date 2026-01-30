@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 const STORAGE_KEY = 'bizlife_game_state';
 const COMPANY_KEY = 'bizlife_company';
 const DEFAULT_STATE = { day: 1, cash: 500000, reputation: 50, morale: 50 };
+
 const INDUSTRY_LABELS = {
   retail: '连锁零售',
   service: '连锁服务',
@@ -104,6 +105,7 @@ const loadGameState = () => {
       typeof parsed?.reputation !== 'number' ||
       typeof parsed?.morale !== 'number'
     ) {
+
       return DEFAULT_STATE;
     }
     return parsed;
@@ -175,6 +177,7 @@ export default function GamePage() {
       morale: clamp(prev.morale + (effects.morale ?? 0))
     }));
     setActiveEvent(null);
+
   };
 
   return (
@@ -250,6 +253,7 @@ export default function GamePage() {
               <div className="stat-label">士气</div>
               <div className="stat-value">{gameState.morale}</div>
             </div>
+
           </div>
           <div className="stat-card">
             <div className="stat-label">企业名称</div>
@@ -280,6 +284,9 @@ export default function GamePage() {
             </div>
           )}
           <button className="primary-button" onClick={handleNextDay} disabled={Boolean(activeEvent)}>
+
+          </div>
+          <button className="primary-button" onClick={handleNextDay}>
             进入下一天
           </button>
         </>
